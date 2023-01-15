@@ -7,9 +7,12 @@ import { AccountsService } from '../account.service';
   styleUrls: ['./new-account.component.css'],
 })
 export class NewAccountComponent {
-
-  constructor(private accService: AccountsService) { }   //service tb sa aiba exact numele clasei din AccountsService
+  constructor(private accountService: AccountsService) {
+    this.accountService.statusUpdated.subscribe((status: string) =>
+      alert('new status' + status)
+    );
+  } //service tb sa aiba exact numele clasei din AccountsService
   onCreateAccount(accountName: string, accountStatus: string) {
-    this.accService.addAccount(accountName,accountStatus);
+    this.accountService.addAccount(accountName, accountStatus);
   }
 }

@@ -10,10 +10,11 @@ export class AccountComponent {
   @Input() id: number;
 
   constructor(
-    private accService: AccountsService
+    private accountService: AccountsService
   ) { } //service tb sa aiba exact numele clasei din logging.service.ts
 
   onSetTo(status: string) {
-    this.accService.updateStatus(this.id, status);
+    this.accountService.updateStatus(this.id, status);
+    this.accountService.statusUpdated.emit(status);
   }
 }
